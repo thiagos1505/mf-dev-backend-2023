@@ -6,9 +6,9 @@ namespace mf_dev_backend_2023.Controllers
 {
     public class VeiculosController : Controller
     {
-        private readonly AppDbContext? _context;
+        private readonly AppDbContext _context;
 
-        public VeiculosController(AppDbContext? context)
+        public VeiculosController(AppDbContext context)
         {
             _context = context;
         }
