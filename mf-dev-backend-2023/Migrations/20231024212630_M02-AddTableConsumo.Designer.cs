@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using mf_dev_backend_2023.Models;
 
@@ -11,9 +12,10 @@ using mf_dev_backend_2023.Models;
 namespace mf_dev_backend_2023.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20231024212630_M02-AddTableConsumo")]
+    partial class M02AddTableConsumo
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -24,27 +26,20 @@ namespace mf_dev_backend_2023.Migrations
 
             modelBuilder.Entity("mf_dev_backend_2023.Models.Consumo", b =>
                 {
-                    b.Property<int>("MyProperty")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("MyProperty"), 1L, 1);
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
                     b.Property<DateTime>("Data")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("Descricao")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("Id")
-                        .HasColumnType("int");
-
                     b.Property<int>("Km")
                         .HasColumnType("int");
 
-                    b.Property<decimal>("Valor")
-                        .HasColumnType("decimal(18,2)");
+                    b.Property<double>("Valor")
+                        .HasColumnType("float");
 
                     b.Property<int>("VeiculoId")
                         .HasColumnType("int");
@@ -52,7 +47,7 @@ namespace mf_dev_backend_2023.Migrations
                     b.Property<int>("combustivel")
                         .HasColumnType("int");
 
-                    b.HasKey("MyProperty");
+                    b.HasKey("Id");
 
                     b.HasIndex("VeiculoId");
 
